@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite" parallel="tests" thread-count="3">
+	<listeners>
+		<listener class-name="com.april.Utility.Listeners"></listener>
+	</listeners>
+	
+  <test name="TestonChrome">
+  <parameter name="browserName" value="chrome"></parameter>
+    <classes>
+      <class name="com.test.TestCase01"/>
+      <class name="com.test.TestCase02"/>
+      <class name="com.test.TestCase03"/>
+    </classes>
+  </test>
+  
+  <test name="TestonEdge">
+  <parameter name="browserName" value="edge"></parameter>
+    <classes>
+      <class name="com.test.TestCase01"/>
+      <class name="com.test.TestCase02"/>
+      <class name="com.test.TestCase03"/>
+    </classes>
+  </test>
+  
+  <test name="TestonFirefox">
+  <parameter name="browserName" value="firefox"></parameter>
+    <classes>
+      <class name="com.test.TestCase01"/>
+      <class name="com.test.TestCase02"/>
+      <class name="com.test.TestCase03"/>
+    </classes>
+  </test>
+  
+</suite>

@@ -1,0 +1,170 @@
+package com.april.Utility;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
+
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
+
+import java.awt.Toolkit;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.DataFlavor;
+import java.awt.datatransfer.Transferable;
+
+public class Library2 extends Baseclass{
+	public static ExtentTest test;
+	
+	/**
+	 * This function is used to click on given xpath webelement
+	 * @param xpath
+	 */
+	public static void click(String xpath) {
+		try {
+		WebElement element = driver.findElement(By.xpath(xpath));
+		element.click();
+		test.log(Status.PASS,"Successfully clicked on Element xpath: " + xpath);
+		System.out.println("Successfully clicked on Element xpath: " + xpath);
+		}
+		catch (Exception e) {
+//			test.log(Status.FAIL,"Unable to click on Element xpath: " + xpath);
+			System.out.println("Unable to click on Element xpath: " + xpath);
+		}
+	}
+	
+	/**
+	 * This function is used to enter text in given xpath webelement textbox
+	 * @param xpath
+	 * @param textToBeEntered
+	 */
+	public static void enterText(String xpath, String textToBeEntered) {
+		try {
+			WebElement element = driver.findElement(By.xpath(xpath));
+			element.sendKeys(textToBeEntered);
+			test.log(Status.PASS,"Successfully Entered text in Element xpath: " + xpath);
+			System.out.println("Successfully Entered text in Element xpath: " + xpath);
+			}
+			catch (Exception e) {
+//				test.log(Status.FAIL,"Unable to enter text in Element xpath: " + xpath);
+				System.out.println("Unable to enter text in Element xpath: " + xpath);
+			}
+	}
+	
+	/**
+	 * This function is used to select pericular element From given Dropdown Webelement xpath
+	 * @param xpath
+	 * @param valueToBeSelected
+	 */
+	public  static void selectValue(String xpath, String valueToBeSelected) {
+		try {
+			WebElement element = driver.findElement(By.xpath(xpath));
+			Select select = new Select (element);
+			select.selectByVisibleText(valueToBeSelected);
+			test.log(Status.PASS, String.format("Value %s is Selected in DropDown of xpath Webelement: %s", valueToBeSelected, xpath));
+			System.out.println( String.format("Value %s is Selected in DropDown of xpath Webelement: %s", valueToBeSelected, xpath));
+		}
+		catch (Exception e) {
+//			test.log(Status.FAIL, String.format("Unable to select Value %s in DropDown of xpath Webelement: %s", valueToBeSelected, xpath));
+			System.out.println(String.format("Unable to select Value %s in DropDown of xpath Webelement: %s", valueToBeSelected, xpath));
+		}
+	}
+		
+	/**
+	 * This function is used to get Text from given Webelement xpath
+	 * @param xpath
+	 */
+	public static String getText(String xpath) {
+		String text = "";
+		try {
+			WebElement element = driver.findElement(By.xpath(xpath));
+			text = element.getText();
+			test.log(Status.PASS, String.format("Text %s is read from xpath Webelement: %s", text, xpath));
+			System.out.println( String.format("Text %s is read from xpath Webelement: %s", text, xpath));
+		}
+		catch (Exception e) {
+//			test.log(Status.FAIL, String.format("Unable to read Text from xpath Webelement: %s", xpath));
+			System.out.println( String.format("Unable to read Text from xpath Webelement: %s", xpath));
+		}
+		return text;
+	}
+	
+	/**
+	 * This function is used to get title of current focused window.
+	 */
+	public static String getTitle() {
+		String title = "";
+		try {
+			title = driver.getTitle();
+			test.log(Status.PASS, String.format("Current Window title is: %s", title));
+			System.out.println( String.format("Current Window title is: %s", title));
+		}
+		catch (Exception e) {
+//			test.log(Status.FAIL, "Unable to read title of Current window");
+			System.out.println( "Unable to read title of Current window");
+		}
+		return title;
+	}
+	
+	/**
+	 * This function is used to get title of current focused window.
+	 */
+	public static void switchToFrame(String nameOrId) {
+		try {
+			driver.switchTo().frame(nameOrId);
+			test.log(Status.PASS, String.format("Switched to iFrame having name or id is: %s", nameOrId));
+			System.out.println( String.format("Switched to iFrame having name or id is: %s", nameOrId));
+		}
+		catch (Exception e) {
+//			test.log(Status.FAIL, "Unable to Switch to iFrame having name or id is: " + nameOrId);
+			System.out.println("Unable to Switch to iFrame having name or id is: "+ nameOrId);
+		}
+	}
+	
+	/**
+	 * This function is used to get title of current focused window.
+	 */
+	public static void switchToDefaultFrame() {
+		try {
+			driver.switchTo().defaultContent();
+			test.log(Status.PASS, "Switched to default frame");
+			System.out.println( "Switched to default frame");
+		}
+		catch (Exception e) {
+//			test.log(Status.FAIL, "Unableto switch to default frame");
+			System.out.println("Unableto switch to default frame");
+		}
+	}
+	
+	/**
+	 * This function is used to get Text from given Webelement xpath
+	 * @param xpath
+	 */
+	public static String getEnteredTextFromTextBox(String xpath) {
+		String clipboardText = "";
+			WebElement element = driver.findElement(By.xpath(xpath));
+			element.sendKeys(Keys.CONTROL + "a");
+			element.sendKeys(Keys.CONTROL + "c");
+			Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+
+	        // Get the clipboard content
+	        Transferable clipboardContent = clipboard.getContents(null);
+
+	        // Check if the content is text
+	        if (clipboardContent.isDataFlavorSupported(DataFlavor.stringFlavor)) {
+	            try {
+	                // Get the text content
+	                clipboardText = (String) clipboardContent.getTransferData(DataFlavor.stringFlavor);
+	                System.out.println("Clipboard Text: " + clipboardText);
+	            } catch (Exception e) {
+	                e.printStackTrace();
+	            }
+	        } else {
+	            System.out.println("Clipboard does not contain text");
+	        }
+		return clipboardText;
+	}
+	
+	
+	
+}

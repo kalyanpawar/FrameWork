@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Suite" duration-ms="57028" started-at="2023-11-26T19:16:44 IST" finished-at="2023-11-26T19:17:41 IST">
+    <groups>
+    </groups>
+    <test name="Test" duration-ms="57028" started-at="2023-11-26T19:16:44 IST" finished-at="2023-11-26T19:17:41 IST">
+      <class name="com.test.TestCaseID30001">
+        <test-method status="PASS" signature="BS()[pri:0, instance:com.test.TestCaseID30001@243c4f91]" name="BS" is-config="true" duration-ms="19" started-at="2023-11-26T19:16:44 IST" finished-at="2023-11-26T19:16:44 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- BS -->
+        <test-method status="PASS" signature="Setup(java.lang.String)[pri:0, instance:com.test.TestCaseID30001@243c4f91]" name="Setup" is-config="true" duration-ms="28971" started-at="2023-11-26T19:16:44 IST" finished-at="2023-11-26T19:17:13 IST">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Edge]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Setup -->
+        <test-method status="PASS" signature="scenarioOne()[pri:0, instance:com.test.TestCaseID30001@243c4f91]" name="scenarioOne" duration-ms="25623" started-at="2023-11-26T19:17:13 IST" finished-at="2023-11-26T19:17:39 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- scenarioOne -->
+        <test-method status="PASS" signature="closebrower()[pri:0, instance:com.test.TestCaseID30001@243c4f91]" name="closebrower" is-config="true" duration-ms="2368" started-at="2023-11-26T19:17:39 IST" finished-at="2023-11-26T19:17:41 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closebrower -->
+      </class> <!-- com.test.TestCaseID30001 -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
+</testng-results>

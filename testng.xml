@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+	<listeners>
+		<listener class-name="com.april.Utility.Listeners"></listener>
+	</listeners>
+	<test name="Test">
+		  <parameter name="browserName" value="edge"></parameter>  
+		<classes>
+			<class name="com.test.TestCase01" />
+			<class name="com.test.TestCase02" />
+			<class name="com.test.TestCase03" />
+			<class name="com.test.TestCase04" />
+			<class name="com.test.TestCase05" />
+			<class name="com.test.TestCase06" />
+			<class name="com.test.TestCase07" />
+			<class name="com.test.TestCase08" />
+			<class name="com.test.TestCase09" />
+		</classes>
+	</test> <!-- Test -->
+</suite> <!-- Suite -->
