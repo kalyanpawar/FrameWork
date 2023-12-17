@@ -1,5 +1,7 @@
 package pagemethods;
 
+import java.util.List;
+
 import org.testng.Assert;
 
 import com.april.Utility.Library2;
@@ -18,6 +20,7 @@ public class PageMethods extends Library2{
 	final static String submitButton = "//input[@id='FSsubmit']";
 	final static String iframeId = "frame-one796456169";
 	final static String errorMessageXpath = "//h1[contains(text(),'occurred')]";
+	final static String colorDropDownXpath = "//select[@id='colors']";
 	
 	/**
 	 * This Function is used to validate Title of window
@@ -119,5 +122,23 @@ public class PageMethods extends Library2{
 		Assert.assertEquals(getText(errorMessageXpath), errorMessage);
 	}
 	
+	/**
+	 * This function is used to get all optionsFrom colors dropdown.
+	 * @return
+	 */
+	public static List<String> getColorsAllOptions() {
+		List<String> colorsAllOptions = getAllOptionsFromDropDown(colorDropDownXpath);
+		return colorsAllOptions;
+	}
 	
+	public static void selectOptionsFromColorsDropDownAndValidate(List<String> options) {
+		for(String option: options) {
+			System.out.println(option);
+			selectValue(colorDropDownXpath, option);
+			justWait(3);
+			Assert.assertEquals(getSelectedOptionFromDropDown(colorDropDownXpath), option);
+			justWait(3);
+			deSelectByValue(colorDropDownXpath, option);
+		}
+	}
 }
