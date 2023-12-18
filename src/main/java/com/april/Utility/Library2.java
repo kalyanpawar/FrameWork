@@ -23,16 +23,10 @@ public class Library2 extends Baseclass{
 	 * @param xpath
 	 */
 	public static void click(String xpath) {
-		try {
 		WebElement element = driver.findElement(By.xpath(xpath));
 		element.click();
 		test.log(Status.PASS,"Successfully clicked on Element xpath: " + xpath);
 		System.out.println("Successfully clicked on Element xpath: " + xpath);
-		}
-		catch (Exception e) {
-//			test.log(Status.FAIL,"Unable to click on Element xpath: " + xpath);
-			System.out.println("Unable to click on Element xpath: " + xpath);
-		}
 	}
 	
 	/**
@@ -41,16 +35,10 @@ public class Library2 extends Baseclass{
 	 * @param textToBeEntered
 	 */
 	public static void enterText(String xpath, String textToBeEntered) {
-		try {
-			WebElement element = driver.findElement(By.xpath(xpath));
-			element.sendKeys(textToBeEntered);
-			test.log(Status.PASS,"Successfully Entered text in Element xpath: " + xpath);
-			System.out.println("Successfully Entered text in Element xpath: " + xpath);
-			}
-			catch (Exception e) {
-//				test.log(Status.FAIL,"Unable to enter text in Element xpath: " + xpath);
-				System.out.println("Unable to enter text in Element xpath: " + xpath);
-			}
+		WebElement element = driver.findElement(By.xpath(xpath));
+		element.sendKeys(textToBeEntered);
+		test.log(Status.PASS,"Successfully Entered text in Element xpath: " + xpath);
+		System.out.println("Successfully Entered text in Element xpath: " + xpath);
 	}
 	
 	/**
@@ -59,10 +47,10 @@ public class Library2 extends Baseclass{
 	 * @param valueToBeSelected
 	 */
 	public  static void selectValue(String xpath, String valueToBeSelected) {
-			WebElement element = driver.findElement(By.xpath(xpath));
-			Select select = new Select (element);
-			select.selectByVisibleText(valueToBeSelected);
-			System.out.println( String.format("Value %s is Selected in DropDown of xpath Webelement: %s", valueToBeSelected, xpath));
+		WebElement element = driver.findElement(By.xpath(xpath));
+		Select select = new Select (element);
+		select.selectByVisibleText(valueToBeSelected);
+		System.out.println( String.format("Value %s is Selected in DropDown of xpath Webelement: %s", valueToBeSelected, xpath));
 	}
 		
 	/**
@@ -71,16 +59,10 @@ public class Library2 extends Baseclass{
 	 */
 	public static String getText(String xpath) {
 		String text = "";
-		try {
-			WebElement element = driver.findElement(By.xpath(xpath));
-			text = element.getText();
-			test.log(Status.PASS, String.format("Text %s is read from xpath Webelement: %s", text, xpath));
-			System.out.println( String.format("Text %s is read from xpath Webelement: %s", text, xpath));
-		}
-		catch (Exception e) {
-//			test.log(Status.FAIL, String.format("Unable to read Text from xpath Webelement: %s", xpath));
-			System.out.println( String.format("Unable to read Text from xpath Webelement: %s", xpath));
-		}
+		WebElement element = driver.findElement(By.xpath(xpath));
+		text = element.getText();
+		test.log(Status.PASS, String.format("Text %s is read from xpath Webelement: %s", text, xpath));
+		System.out.println( String.format("Text %s is read from xpath Webelement: %s", text, xpath));
 		return text;
 	}
 	
@@ -89,15 +71,9 @@ public class Library2 extends Baseclass{
 	 */
 	public static String getTitle() {
 		String title = "";
-		try {
-			title = driver.getTitle();
-			test.log(Status.PASS, String.format("Current Window title is: %s", title));
-			System.out.println( String.format("Current Window title is: %s", title));
-		}
-		catch (Exception e) {
-//			test.log(Status.FAIL, "Unable to read title of Current window");
-			System.out.println( "Unable to read title of Current window");
-		}
+		title = driver.getTitle();
+		test.log(Status.PASS, String.format("Current Window title is: %s", title));
+		System.out.println( String.format("Current Window title is: %s", title));
 		return title;
 	}
 	
@@ -105,30 +81,18 @@ public class Library2 extends Baseclass{
 	 * This function is used to get title of current focused window.
 	 */
 	public static void switchToFrame(String nameOrId) {
-		try {
-			driver.switchTo().frame(nameOrId);
-			test.log(Status.PASS, String.format("Switched to iFrame having name or id is: %s", nameOrId));
-			System.out.println( String.format("Switched to iFrame having name or id is: %s", nameOrId));
-		}
-		catch (Exception e) {
-//			test.log(Status.FAIL, "Unable to Switch to iFrame having name or id is: " + nameOrId);
-			System.out.println("Unable to Switch to iFrame having name or id is: "+ nameOrId);
-		}
+		driver.switchTo().frame(nameOrId);
+		test.log(Status.PASS, String.format("Switched to iFrame having name or id is: %s", nameOrId));
+		System.out.println( String.format("Switched to iFrame having name or id is: %s", nameOrId));
 	}
 	
 	/**
 	 * This function is used to get title of current focused window.
 	 */
 	public static void switchToDefaultFrame() {
-		try {
-			driver.switchTo().defaultContent();
-			test.log(Status.PASS, "Switched to default frame");
-			System.out.println( "Switched to default frame");
-		}
-		catch (Exception e) {
-//			test.log(Status.FAIL, "Unableto switch to default frame");
-			System.out.println("Unableto switch to default frame");
-		}
+		driver.switchTo().defaultContent();
+		test.log(Status.PASS, "Switched to default frame");
+		System.out.println( "Switched to default frame");
 	}
 	
 	/**

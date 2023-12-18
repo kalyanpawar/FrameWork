@@ -21,6 +21,7 @@ public class PageMethods extends Library2{
 	final static String iframeId = "frame-one796456169";
 	final static String errorMessageXpath = "//h1[contains(text(),'occurred')]";
 	final static String colorDropDownXpath = "//select[@id='colors']";
+	final static String bookPriceXpath = "//td[text()='%s']/following-sibling::td[3]";
 	
 	/**
 	 * This Function is used to validate Title of window
@@ -140,5 +141,21 @@ public class PageMethods extends Library2{
 			justWait(3);
 			deSelectByValue(colorDropDownXpath, option);
 		}
+	}
+	
+	public static int getPriceOfBook(String bookName) {
+		return  Integer.parseInt(getText(String.format(bookPriceXpath, bookName)));
+	}
+	
+	public static int getAndAddPricesOfBooks(String... booksName) {
+		int pricesAdded = 0;
+		for(String bookName: booksName) {
+			pricesAdded = pricesAdded + getPriceOfBook(bookName);
+		}
+		return pricesAdded;
+	}
+	
+	public static void validateBooksPriceTotal(int total) {
+		Assert.assertEquals(total, 7100);
 	}
 }
