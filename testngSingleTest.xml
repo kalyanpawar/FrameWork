@@ -7,9 +7,7 @@
 	<test name="Test">
 		<parameter name="browserName" value="Edge"></parameter>
 		<classes>
-			<!--<class name="com.test.TestCase05" /> -->
-			<!--<class name="com.test.TestCase06" /> -->
-			 <class name="com.test.TestCaseID30001" />
+			 <class name="com.test.TestCaseID3004" />
 		</classes>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->

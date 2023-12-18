@@ -12,6 +12,8 @@ import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Library2 extends Baseclass{
 	public static ExtentTest test;
@@ -57,17 +59,10 @@ public class Library2 extends Baseclass{
 	 * @param valueToBeSelected
 	 */
 	public  static void selectValue(String xpath, String valueToBeSelected) {
-		try {
 			WebElement element = driver.findElement(By.xpath(xpath));
 			Select select = new Select (element);
 			select.selectByVisibleText(valueToBeSelected);
-			test.log(Status.PASS, String.format("Value %s is Selected in DropDown of xpath Webelement: %s", valueToBeSelected, xpath));
 			System.out.println( String.format("Value %s is Selected in DropDown of xpath Webelement: %s", valueToBeSelected, xpath));
-		}
-		catch (Exception e) {
-//			test.log(Status.FAIL, String.format("Unable to select Value %s in DropDown of xpath Webelement: %s", valueToBeSelected, xpath));
-			System.out.println(String.format("Unable to select Value %s in DropDown of xpath Webelement: %s", valueToBeSelected, xpath));
-		}
 	}
 		
 	/**
@@ -165,6 +160,46 @@ public class Library2 extends Baseclass{
 		return clipboardText;
 	}
 	
+	/**
+	 * This Function is used to get all of the options from dropdown.
+	 * @param elementXpath
+	 * @return
+	 */
+	public static List<String> getAllOptionsFromDropDown(String elementXpath){
+		WebElement webElement = driver.findElement(By.xpath(elementXpath));
+		Select select = new Select(webElement);
+		List<WebElement> elementOptions = select.getOptions();
+		List<String> options = new ArrayList<>();
+		for(WebElement option: elementOptions) {
+			options.add(option.getText());
+		}
+		return options;
+	}
 	
+	/**
+	 * This function is used to validate selected option from dropdown.
+	 * @param elementXpath
+	 * @return
+	 */
+	public static String getSelectedOptionFromDropDown(String elementXpath) {
+		WebElement webElement = driver.findElement(By.xpath(elementXpath));
+		Select select = new Select(webElement);
+		WebElement element = select.getFirstSelectedOption();
+		return element.getText();
+	}
 	
+	public static void justWait(int seconds) {
+		try {
+			Thread.sleep(seconds*1000);
+		}
+		catch(Exception e) {
+			
+		}
+	}
+	
+	public static void deSelectByValue(String elementXpath, String text) {
+		WebElement webElement = driver.findElement(By.xpath(elementXpath));
+		Select select = new Select(webElement);
+		select.deselectByVisibleText(text);
+	}
 }
