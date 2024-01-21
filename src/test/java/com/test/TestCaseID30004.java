@@ -8,7 +8,7 @@ import com.april.Utility.Baseclass;
 
 import pagemethods.PageMethods;
 
-public class TestCaseID3004 extends Baseclass{
+public class TestCaseID30004 extends Baseclass{
 
 	/**
 	 * @Auther: Kalyan Pawar2

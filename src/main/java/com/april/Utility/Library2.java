@@ -133,7 +133,7 @@ public class Library2 extends Baseclass{
 		WebElement webElement = driver.findElement(By.xpath(elementXpath));
 		Select select = new Select(webElement);
 		List<WebElement> elementOptions = select.getOptions();
-		List<String> options = new ArrayList<>();
+		List<String> options = new ArrayList();
 		for(WebElement option: elementOptions) {
 			options.add(option.getText());
 		}

@@ -20,8 +20,6 @@ public class TestCaseID30003 extends Baseclass{
 	/*@Step 1: Login to app. Expected: App is opened. */
 	/*@Step 2: Select all the colors One After another. Expected: Colors are selected, Verify previously selected colors are deselected. */
 	List<String> colorsAllOptions = PageMethods.getColorsAllOptions();
-//	PageMethods.selectOptionsFromColorsDropDownAndValidate(colorsAllOptions.get(0));
-//	PageMethods.selectOptionsFromColorsDropDownAndValidate(colorsAllOptions.get(2));
 	PageMethods.selectOptionsFromColorsDropDownAndValidate(colorsAllOptions);
 	
 	}

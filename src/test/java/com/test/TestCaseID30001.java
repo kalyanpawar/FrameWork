@@ -30,7 +30,7 @@ public class TestCaseID30001 extends Baseclass{
 		/* @Step: 1. Login to the app. Expected: App is opened */
 		/* @Step: 2. Enter random name. Expected: Name is entered */
 		PageMethods.setName(name);
-//		PageMethods.validateEnteredNameText(name);
+		PageMethods.validateEnteredNameText(name);
 		
 		/* @Step: 3. Enter random phone number. Expected: Phone number is entered. */
 		PageMethods.setPhone(phone);
